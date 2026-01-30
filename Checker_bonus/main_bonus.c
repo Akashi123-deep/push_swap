@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 11:57:37 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/30 12:39:23 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:47:47 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	execute_instruction(char *line, t_Stack *stack_a, t_Stack *stack_b)
 		return (rrr(stack_a, stack_b));
 }
 
-bool	read_line_from_stdin(char *buffer, char **list)
+bool	read_line_from_stdin(t_Stack *stack_a, t_Stack *stack_b, char *buffer,
+		char **list)
 {
 	int		i;
 	ssize_t	bytes;
@@ -79,7 +80,11 @@ bool	read_line_from_stdin(char *buffer, char **list)
 		{
 			buffer[i] = '\0';
 			if (i > 0)
+			{
 				error_message("Error\n", list);
+				free_the_stack(stack_a);
+				free_the_stack(stack_b);
+			}
 			return (false);
 		}
 		if (buffer[i] == '\n')
@@ -97,7 +102,7 @@ void	implement_the_intctructions(t_Stack *stack_a, t_Stack *stack_b,
 {
 	char	buffer[10];
 
-	while (read_line_from_stdin(buffer, list) != 0)
+	while (read_line_from_stdin(buffer, list, stack_a, stack_b) != 0)
 	{
 		validate_instruction(buffer);
 		execute_instruction(buffer, stack_a, stack_b);
