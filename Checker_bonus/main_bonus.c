@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 11:57:37 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/25 11:26:32 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:39:23 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	execute_instruction(char *line, t_Stack *stack_a, t_Stack *stack_b)
 		return (rrr(stack_a, stack_b));
 }
 
-bool	read_line_from_stdin(char *buffer)
+bool	read_line_from_stdin(char *buffer, char **list)
 {
 	int		i;
 	ssize_t	bytes;
@@ -79,10 +79,7 @@ bool	read_line_from_stdin(char *buffer)
 		{
 			buffer[i] = '\0';
 			if (i > 0)
-			{
-				ft_putstr_fd("Error\n", 2);
-				exit(1);
-			}
+				error_message("Error\n", list);
 			return (false);
 		}
 		if (buffer[i] == '\n')
@@ -95,11 +92,12 @@ bool	read_line_from_stdin(char *buffer)
 	return (true);
 }
 
-void	implement_the_intctructions(t_Stack *stack_a, t_Stack *stack_b)
+void	implement_the_intctructions(t_Stack *stack_a, t_Stack *stack_b,
+		char **list)
 {
 	char	buffer[10];
 
-	while (read_line_from_stdin(buffer) != 0)
+	while (read_line_from_stdin(buffer, list) != 0)
 	{
 		validate_instruction(buffer);
 		execute_instruction(buffer, stack_a, stack_b);
@@ -124,7 +122,7 @@ int	main(int argc, char **argv)
 	stack_a = create_stack(length);
 	stack_b = create_stack(length);
 	push_items(stack_a, argv);
-	implement_the_intctructions(stack_a, stack_b);
+	implement_the_intctructions(stack_a, stack_b, argv);
 	if (!is_stack_sorted(stack_a, stack_b))
 		ft_putstr_fd("KO\n", 1);
 	else
