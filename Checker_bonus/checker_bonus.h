@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 11:24:58 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/30 11:10:19 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/01/30 19:15:40 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_Stack
 	int		capacity;
 }			t_Stack;
 
+void		free_the_things(t_Stack *stack_a, t_Stack *stack_b, char **list);
 void		error_message(char *message, char **list);
 char		**mix_arg(char **arg);
 void		free_list(char **arr);
@@ -41,7 +42,6 @@ size_t		arg_length(char **arg);
 void		free_the_stack(t_Stack *stack);
 t_Stack		*create_stack(int capacity);
 long long	ft_atoi(const char *str);
-size_t		ft_strlen(const char *str);
 void		ft_putstr_fd(char *s, int fd);
 int			ft_strcmp(const char *s1, const char *s2);
 void		pa(t_Stack *stackA, t_Stack *stackB);

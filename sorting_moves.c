@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 10:59:13 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/30 11:14:18 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/01/30 19:14:23 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,27 +80,29 @@ void	execute_move(t_Stack *a, t_Stack *b, t_move m)
 char	**mix_arg(char **arg)
 {
 	char	**result;
-	char	**start;
 	char	**temp;
+	int		i;
+	int		j;
 
 	result = malloc((mix_arg_count(arg) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
-	start = result;
+	i = 0;
 	while (*arg)
 	{
 		temp = ft_split(*arg, ' ');
 		if (!*temp)
 		{
-			free_list(start);
-			error_message("Error\n", temp);
+			error_message("Error\n" , result);
 		}
-		copy_to(result, temp);
+		j = 0;
+		while (temp[j])
+		{
+			result[i++] = temp[j++];
+		}
 		free(temp);
-		while (*result)
-			result++;
 		arg++;
 	}
-	*result = NULL;
-	return (start);
+	result[i] = NULL;
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 13:08:17 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/30 11:14:52 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/01/30 18:53:46 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void		bring_to_top(t_Stack *stack, int pos, char name);
 void		rotate_smallest_to_top(t_Stack *stack, char name);
 void		sort_three(t_Stack *stackA);
 t_move		find_cheapest_move(t_Stack *a, t_Stack *b);
-void		sorting_algo(t_Stack *stackA, t_Stack *stackB);
 bool		is_empty(t_Stack *stack);
 bool		pa(t_Stack *stackA, t_Stack *stackB);
 bool		pb(t_Stack *stackA, t_Stack *stackB);

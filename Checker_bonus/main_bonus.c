@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 11:57:37 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/30 12:47:47 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/01/30 15:12:45 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,7 @@ bool	read_line_from_stdin(t_Stack *stack_a, t_Stack *stack_b, char *buffer,
 			buffer[i] = '\0';
 			if (i > 0)
 			{
-				error_message("Error\n", list);
-				free_the_stack(stack_a);
-				free_the_stack(stack_b);
+				free_the_things(stack_a, stack_b, list);
 			}
 			return (false);
 		}
@@ -102,7 +100,7 @@ void	implement_the_intctructions(t_Stack *stack_a, t_Stack *stack_b,
 {
 	char	buffer[10];
 
-	while (read_line_from_stdin(buffer, list, stack_a, stack_b) != 0)
+	while (read_line_from_stdin(stack_a, stack_b, buffer, list) != 0)
 	{
 		validate_instruction(buffer);
 		execute_instruction(buffer, stack_a, stack_b);
