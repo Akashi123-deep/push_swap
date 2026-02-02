@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 10:59:13 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/30 19:14:23 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/02/02 09:56:21 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ char	**mix_arg(char **arg)
 		temp = ft_split(*arg, ' ');
 		if (!*temp)
 		{
+			result[i] = NULL;
 			error_message("Error\n" , result);
 		}
 		j = 0;
