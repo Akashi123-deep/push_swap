@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 11:42:55 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/30 10:29:40 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/02/02 10:11:40 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	is_sorted(char **str)
 			return (false);
 		temp++;
 	}
-	exit(0);
+	return(true);
 }
 
 static int	find_the_smallest_number(t_Stack *stack)

@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 13:08:13 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/30 10:29:21 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/02/02 10:13:45 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,14 @@ int	main(int argc, char **argv)
 	stack_a = create_stack_main(length);
 	stack_b = create_stack_main(length);
 	push_items(stack_a, argv);
-	is_sorted(argv);
-	if (length == 5)
-		sort_five_elements(stack_a, stack_b);
+	if (is_sorted(argv));
 	else
-		sort_the_stack(stack_a, stack_b);
+	{
+		if (length == 5)
+			sort_five_elements(stack_a, stack_b);
+		else
+			sort_the_stack(stack_a, stack_b);
+	}
 	free_list(argv);
 	free_the_stack(stack_a);
 	free_the_stack(stack_b);

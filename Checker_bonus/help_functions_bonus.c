@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 11:29:11 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/30 11:12:57 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/02/02 10:39:15 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,32 @@ size_t	mix_arg_count(char **arg)
 char	**mix_arg(char **arg)
 {
 	char	**result;
-	char	**start;
 	char	**temp;
+	int		i;
+	int		j;
 
 	result = malloc((mix_arg_count(arg) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
-	start = result;
+	i = 0;
 	while (*arg)
 	{
 		temp = ft_split(*arg, ' ');
-		if (!*temp)
+		if (!temp || !*temp)
 		{
-			free_list(start);
-			error_message("Error\n", temp);
+			if (temp)
+				free(temp);
+			result[i] = NULL;
+			error_message("Error\n", result);
 		}
-		copy_to(result, temp);
+		j = 0;
+		while (temp[j])
+		{
+			result[i++] = temp[j++];
+		}
 		free(temp);
-		while (*result)
-			result++;
 		arg++;
 	}
-	*result = NULL;
-	return (start);
+	result[i] = NULL;
+	return (result);
 }

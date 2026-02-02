@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 13:06:45 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/01/30 11:10:08 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/02/02 10:39:48 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	error_message(char *message, char **list)
 {
 	ft_putstr_fd(message, 2);
 	free_list(list);
-	exit(2);
+	exit(1);
 }
 
 static bool	is_duplicates(char **arg)
@@ -86,20 +86,22 @@ static bool	is_over_flow(char *temp)
 bool	is_valid_arg(char **temp)
 {
 	long long	number;
+	char **start;
 
+	start = temp;
 	if (!*temp)
-		error_message("Error\n", temp);
+		error_message("Error\n", start);
 	while (*temp)
 	{
 		number = ft_atoi(*temp);
 		if (number > INT_MAX || number < INT_MIN)
-			error_message("Error\n", temp);
+			error_message("Error\n", start);
 		if (is_duplicates(temp))
-			error_message("Error\n", temp);
+			error_message("Error\n", start);
 		if (!is_valid_nbr(temp))
-			error_message("Error\n", temp);
+			error_message("Error\n", start);
 		if (is_over_flow(*temp))
-			error_message("Error\n", temp);
+			error_message("Error\n", start);
 		temp++;
 	}
 	return (true);

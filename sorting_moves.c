@@ -6,7 +6,7 @@
 /*   By: mel-yazi <mel-yazi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 10:59:13 by mel-yazi          #+#    #+#             */
-/*   Updated: 2026/02/02 09:56:21 by mel-yazi         ###   ########.fr       */
+/*   Updated: 2026/02/02 10:27:45 by mel-yazi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,12 @@ char	**mix_arg(char **arg)
 	while (*arg)
 	{
 		temp = ft_split(*arg, ' ');
-		if (!*temp)
+		if (!temp || !*temp)
 		{
+			if (temp)
+				free(temp);
 			result[i] = NULL;
-			error_message("Error\n" , result);
+			error_message("Error\n", result);
 		}
 		j = 0;
 		while (temp[j])
